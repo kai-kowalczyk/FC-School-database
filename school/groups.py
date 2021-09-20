@@ -1,4 +1,4 @@
-import users
+from users import *
 
 class Group:
     def __init__(self, group_id, supervisor):
@@ -13,5 +13,5 @@ class Group:
     def add_teacher(self):
         firstname = input('Podaj imię: ')
         lastname = input('Podaj nazwisko: ')
-        
+
 

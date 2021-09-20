@@ -4,7 +4,7 @@ class Supervisor:
         self.lastname = lastname
         self.supervised_groups = []
 
-    def add_classes(self, group_id):
+    def add_groups(self, group_id):
         if len(group_id) > 2:
             print('Złe oznaczenie klasy! (Prawidłowo: pierwszy znak to cyfra, drugi to litera.)')
         else:
