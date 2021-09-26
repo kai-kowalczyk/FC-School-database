@@ -2,18 +2,21 @@ class Supervisor:
     def __init__(self, firstname, lastname):
         self.firstname = firstname
         self.lastname = lastname
-        self.supervised_groups = []
+        self.supervised_group = None
 
-    def add_groups(self, group_id):
-        if len(group_id) > 2:
-            print('Złe oznaczenie klasy! (Prawidłowo: pierwszy znak to cyfra, drugi to litera.)')
-        else:
-            self.supervised_groups.append(group_id)
+    def __repr__(self):
+        return f'{self.firstname} {self.lastname}'
 
-class Pupil:
-    def __init__(self, firstname, lastname):
+
+class Student:
+    
+    def __init__(self, firstname, lastname, group):
         self.firstname = firstname
         self.lastname = lastname
+        self.group = group
+
+    def __repr__(self):
+        return f'{self.firstname} {self.lastname}'
 
 class Teacher:
     def __init__(self, firstname, lastname, subject):
