@@ -2,7 +2,7 @@ from school.groups import School
 import sys
 from school.commands import ALLOWED_COMMANDS, MSG
 
-phrase = sys.argv[1]
+phrase = sys.argv[1] #nazwa klasy, wychowawca, nauczyciel, uczeń
 
 school = School()
 
@@ -21,9 +21,15 @@ while True:
         school.add_student()
 
     if  command == 'nauczyciel':
-        pass
+        school.add_teacher()
 
 if phrase in school.group_dict.keys(): #phrase - nazwa klasy
     print(school.group_dict)
+
+if phrase in school.group_dict[phrase.supervised_group]['supervisor'].values(): #phrase - wychowawca
+    print(school.group_dict[phrase.supervised_group]['students'])
+
+'''print(school.group_dict)
+print(school.teachers_dict)'''
 
     

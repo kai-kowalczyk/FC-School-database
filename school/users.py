@@ -23,3 +23,6 @@ class Teacher:
         self.firstname = firstname
         self.lastname = lastname
         self.subject = subject
+
+    def __repr__(self):
+        return f'{self.firstname} {self.lastname}'
