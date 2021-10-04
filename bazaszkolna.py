@@ -23,11 +23,18 @@ while True:
     if  command == 'nauczyciel':
         school.add_teacher()
 
-if phrase in school.group_dict.keys(): #phrase - nazwa klasy
-    print(school.group_dict)
 
-if phrase in school.group_dict[phrase.supervised_group]['supervisor'].values(): #phrase - wychowawca
-    print(school.group_dict[phrase.supervised_group]['students'])
+if phrase == 'klasa':
+    klasa = input('Nazwa klasy: ')
+    if klasa in school.group_dict.keys(): #phrase - nazwa klasy
+        print(school.group_dict)
+
+if phrase == 'wychowawca':
+    wychowawca = input('Imię i nazwisko: ')
+    for group_id, data in school.group_dict.items(): #phrase - wychowawca
+        supervisor = data['supervisor']
+        if wychowawca == f'{supervisor.firstname} {supervisor.lastname}':
+            print(data['students'])
 
 '''print(school.group_dict)
 print(school.teachers_dict)'''
