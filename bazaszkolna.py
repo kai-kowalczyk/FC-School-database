@@ -25,18 +25,39 @@ while True:
 
 
 if phrase == 'klasa':
-    klasa = input('Nazwa klasy: ')
-    if klasa in school.group_dict.keys(): #phrase - nazwa klasy
-        print(school.group_dict)
+    group_id = input('Nazwa klasy: ')
+    if group_id in school.group_dict.keys():
+        print(school.group_dict[group_id])
 
 if phrase == 'wychowawca':
-    wychowawca = input('Imię i nazwisko: ')
-    for group_id, data in school.group_dict.items(): #phrase - wychowawca
+    supervisor_id = input('Imię i nazwisko wychowawcy: ')
+    for group_id, data in school.group_dict.items():
         supervisor = data['supervisor']
-        if wychowawca == f'{supervisor.firstname} {supervisor.lastname}':
+        if supervisor_id == f'{supervisor.firstname} {supervisor.lastname}':
             print(data['students'])
 
-'''print(school.group_dict)
-print(school.teachers_dict)'''
+if phrase == 'uczen':
+    student_id = input('Imię i nazwisko ucznia: ')
+    for group_id, data in school.group_dict.items():
+        for student in data['students']:
+            if student_id == f'{student.firstname} {student.lastname}':
+                group = group_id
+                break
+        break
+    for teacher_id, data in school.teachers_dict.items():
+        for group_id in data['groups']:
+            if group_id == group:
+                print(data['subject'], ':', teacher_id)
+
+if phrase == 'nauczyciel':
+    teacher_id = input('Imię i nazwisko nauczyciela: ')
+    for teacher, data in school.teachers_dict.items():
+        if teacher_id == f'{teacher.firstname} {teacher.lastname}':
+            for group_id in data['groups']:
+                for group, data in school.group_dict.items():
+                    if group == group_id:
+                        print(group_id, ':', data['supervisor'])
+                    
+        break
 
     

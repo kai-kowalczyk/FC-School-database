@@ -37,22 +37,15 @@ class School:
         lastname = input('Nazwisko: ')
         subject = input('Przedmiot prowadzony: ')
         teacher = Teacher(firstname=firstname, lastname=lastname, subject=subject)
-        self.teachers_dict[f'{teacher.firstname} {teacher.lastname}'] = {'groups': []}
+        self.teachers_dict[teacher] = {'groups': []}
         while True:
             group = input('Nauczana klasa: ')
             if len(group) > 0:
-                if group in self.teachers_dict[f'{teacher.firstname} {teacher.lastname}']['groups']:
-                    self.teachers_dict[f'{teacher.firstname} {teacher.lastname}']['groups'].append(group)
+                if group in self.teachers_dict[teacher]['groups']:
+                    self.teachers_dict[teacher]['groups'].append(group)
                 else:
-                    self.teachers_dict[f'{teacher.firstname} {teacher.lastname}']['groups'].append(group)
+                    self.teachers_dict[teacher]['groups'].append(group)
             else:
                 break
-        self.teachers_dict[f'{teacher.firstname} {teacher.lastname}']['subject'] = subject
+        self.teachers_dict[teacher]['subject'] = subject
         print(self.teachers_dict)
-
-
-'''class Group:
-
-    def __init__(self, group_id, supervisor):
-        self.group_id = group_id
-        self.supervisor = supervisor'''
